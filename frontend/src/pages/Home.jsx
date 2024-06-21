@@ -1,8 +1,15 @@
 import React from 'react'
+import ButtonAppBar from '../components/Navigation'
+import SwipeableTextMobileStepper from '../components/Carousel'
+import TopSearchBar from '../components/TopSearchBar'
 
 function Home() {
   return (
-    <div>Home</div>
+    <div>
+        <ButtonAppBar />
+        <SwipeableTextMobileStepper />
+        <TopSearchBar />
+    </div>
   )
 }
 
