@@ -25,7 +25,7 @@ export default function ButtonAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ bgcolor: '#1f1f1f' }}>
+      <AppBar position="static" sx={{ bgcolor: '#0e2383' }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -41,7 +41,6 @@ export default function ButtonAppBar() {
             <IconButton sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/Treehouse.png" /> {/*the image is in the public folder*/}
             </IconButton>
-            Bodima
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
