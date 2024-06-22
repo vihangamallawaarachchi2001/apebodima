@@ -8,16 +8,13 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import SwipeableTemporaryDrawer from './Drawer';
 import { Avatar } from '@mui/material';
+import PersonIcon from '@mui/icons-material/Person';
 
 export default function ButtonAppBar() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
 
   const toggleDrawer = (open) => (event) => {
-    if (
-      event &&
-      event.type === 'keydown' &&
-      (event.key === 'Tab' || event.key === 'Shift')
-    ) {
+    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
     setDrawerOpen(open);
@@ -25,7 +22,7 @@ export default function ButtonAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ bgcolor: '#0e2383' }}>
+      <AppBar position="static" sx={{ bgcolor: '#3335cf', boxShadow: '0 0 4px 8px rgba(255, 255, 255, 0.3)' }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -37,12 +34,11 @@ export default function ButtonAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: 'white' }}>
-            <IconButton sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/Treehouse.png" /> {/*the image is in the public folder*/}
-            </IconButton>
+          <Typography sx={{fontSize: 24, fontWeight: 700, flexGrow: 1}}>
+             Bodima
           </Typography>
-          <Button color="inherit">Login</Button>
+          
+          <Button color="inherit" sx={{ ml: 2, fontWeight: 'bold', color: '#fff' }}><PersonIcon /></Button>
         </Toolbar>
       </AppBar>
       <SwipeableTemporaryDrawer open={drawerOpen} toggleDrawer={toggleDrawer} />
