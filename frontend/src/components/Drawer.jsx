@@ -99,6 +99,11 @@ export default function SwipeableTemporaryDrawer({ open, toggleDrawer }) {
       open={open}
       onClose={toggleDrawer(false)}
       onOpen={toggleDrawer(true)}
+      sx={{
+        "& .MuiPaper-root": {
+          backgroundColor: "#5e81f7",
+        },
+      }}
     >
       {list()}
     </SwipeableDrawer>
