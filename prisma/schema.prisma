@@ -9,6 +9,57 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  isSeller  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  properties Property[]
+  favourites Favourite[]
+}
+
+model Property {
+  id             Int       @id @default(autoincrement())
+  title          String
+  description    String
+  location       String
+  price          Float
+  isBoosted      Boolean   @default(false)
+  boostType      BoostType @default(NONE)
+  createdAt      DateTime  @default(now())
+  ownerId        Int
+  owner          User      @relation(fields: [ownerId], references: [id])
+  images         Image[]
+  favourites     Favourite[]
+}
+
+model Favourite {
+  id         Int       @id @default(autoincrement())
+  userId     Int
+  propertyId Int
+  user       User      @relation(fields: [userId], references: [id])
+  property   Property  @relation(fields: [propertyId], references: [id])
+  createdAt  DateTime  @default(now())
+  
+  @@unique([userId, propertyId])  // Ensure each user can favourite a property only once
+}
+
+model Image {
+  id         Int       @id @default(autoincrement())
+  url        String
+  propertyId Int
+  property   Property  @relation(fields: [propertyId], references: [id])
+}
+
+enum BoostType {
+  NONE
+  BASIC
+  PREMIUM
+  VIP
 }
