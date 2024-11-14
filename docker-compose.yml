@@ -8,8 +8,3 @@ services:
       MYSQL_DATABASE: boarding_house
     ports:
       - "3307:3306"
-  redis:
-    image: redis
-    container_name: redis_cache
-    ports:
-      - "6380:6379"
